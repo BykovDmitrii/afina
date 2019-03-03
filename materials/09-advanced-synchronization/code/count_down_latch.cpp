@@ -4,14 +4,15 @@ countdownlatch::countdownlatch(uint32_t count) { this->count = count; }
 
 void countdownlatch::await(uint64_t nanosecs) {
     std::unique_lock<std::mutex> lck(lock);
-    if (0 == count) {
+    /*if (0 == count) {// while count != 0
         return;
     }
     if (nanosecs > 0) {
         cv.wait_for(lck, std::chrono::nanoseconds(nanosecs));
     } else {
-        cv.wait(lck);
-    }
+        cv.wait(lck);//нужны whileы
+    }*/
+    
 }
 
 uint32_t countdownlatch::get_count() {
