@@ -98,7 +98,7 @@ std::string pad_space(const std::string &s, size_t length) {
 }
 
 TEST(StorageTest, BigTest) {
-    const size_t length = 8;
+    const size_t length = 20;
     SimpleLRU storage(2 * 100000 * length);
 
     for (long i = 0; i < 100000; ++i) {
