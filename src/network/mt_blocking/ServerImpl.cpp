@@ -5,6 +5,9 @@
 #include <iostream>
 #include <memory>
 #include <stdexcept>
+#include <mutex>
+#include <thread>
+#include <condition_variable>
 
 #include <arpa/inet.h>
 #include <netdb.h>
@@ -26,7 +29,24 @@
 namespace Afina {
 namespace Network {
 namespace MTblocking {
+  /*class Executor{
+    Executor(int n):max_num_thread(n), num_thread(0){}
+    void Exec(std::function func){
+      while(num_thread < max_num_thread)
+        sleep(5);
+      num_thread++;
+      std::thread task(func);
+      task.join();
+      num_thread--;
+    }
 
+  private:
+    std::condition_variable cond_var;
+    std::mutex m;
+    int max_num_thread;
+    int num_thread;
+  };
+*/
 // See Server.h
 ServerImpl::ServerImpl(std::shared_ptr<Afina::Storage> ps, std::shared_ptr<Logging::Service> pl) : Server(ps, pl) {}
 
