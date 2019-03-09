@@ -21,8 +21,12 @@ public:
     SimpleLRU(size_t max_size = 1024) : _max_size(max_size), _curr_size(0) {}
 
     ~SimpleLRU() {
-        _lru_end.reset(); // TODO: Here is stack overflow
         _lru_index.clear();
+        while(_lru_head != nullptr){
+            _lru_head->prev = nullptr;
+            _lru_head = _lru_head->next;
+          }
+        _lru_end.reset(); // TODO: Here is stack overflow
     }
 
     // Implements Afina::Storage interface
