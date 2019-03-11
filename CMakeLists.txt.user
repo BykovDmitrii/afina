@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.5.2, 2019-03-09T12:30:00. -->
+<!-- Written by QtCreator 4.5.2, 2019-03-11T18:04:52. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -62,7 +62,7 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{72d65da9-b3c9-4709-be2a-630fd226133b}</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">4</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">5</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
@@ -341,7 +341,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">catch_tests</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u0412u044bu043fu0443u0441u043a u043cu0438u043du0438u043cu0430u043bu044cu043du043eu0433u043e u0440u0430u0437u043cu0435u0440u0430/third-party/spdlog-0.13.0/tests</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u041fu043e u0443u043cu043eu043bu0447u0430u043du0438u044e/third-party/spdlog-0.13.0/tests</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">catch_tests</value>
@@ -397,7 +397,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">afina</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u0412u044bu043fu0443u0441u043a u043cu0438u043du0438u043cu0430u043bu044cu043du043eu0433u043e u0440u0430u0437u043cu0435u0440u0430/src</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u041fu043e u0443u043cu043eu043bu0447u0430u043du0438u044e/src</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">afina</value>
@@ -453,7 +453,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">runCoroutineTests</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u0412u044bu043fu0443u0441u043a u043cu0438u043du0438u043cu0430u043bu044cu043du043eu0433u043e u0440u0430u0437u043cu0435u0440u0430/test/coroutine</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u041fu043e u0443u043cu043eu043bu0447u0430u043du0438u044e/test/coroutine</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">runCoroutineTests</value>
@@ -509,7 +509,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">runExecuteTests</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u0412u044bu043fu0443u0441u043a u043cu0438u043du0438u043cu0430u043bu044cu043du043eu0433u043e u0440u0430u0437u043cu0435u0440u0430/test/execute</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u041fu043e u0443u043cu043eu043bu0447u0430u043du0438u044e/test/execute</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">runExecuteTests</value>
@@ -565,7 +565,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">runProtocolTests</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u0412u044bu043fu0443u0441u043a u043cu0438u043du0438u043cu0430u043bu044cu043du043eu0433u043e u0440u0430u0437u043cu0435u0440u0430/test/protocol</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u041fu043e u0443u043cu043eu043bu0447u0430u043du0438u044e/test/protocol</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">runProtocolTests</value>
@@ -621,7 +621,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">runStorageTests</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u0412u044bu043fu0443u0441u043a u043cu0438u043du0438u043cu0430u043bu044cu043du043eu0433u043e u0440u0430u0437u043cu0435u0440u0430/test/storage</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/dmitry/Загрузки/mnogo c++/Техносфера/build-afina-united-u041fu043e u0443u043cu043eu043bu0447u0430u043du0438u044e/test/storage</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">runStorageTests</value>

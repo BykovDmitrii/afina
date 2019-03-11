@@ -57,7 +57,7 @@ public:
 
 private:
     // TODO: sinchronization primitives
-    mutable std::mutex m;
+    std::mutex m;
 };
 
 } // namespace Backend
