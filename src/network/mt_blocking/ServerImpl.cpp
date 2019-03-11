@@ -37,7 +37,7 @@ ServerImpl::ServerImpl(std::shared_ptr<Afina::Storage> ps, std::shared_ptr<Loggi
 ServerImpl::~ServerImpl() {}
 
 // See Server.h
-void ServerImpl::Start(uint16_t port, uint32_t n_accept, uint32_t n_worker){
+void ServerImpl::Start(uint16_t port, uint32_t n_accept, uint32_t n_worker=128){
     this->n_workers = n_worker;
     _logger = pLogging->select("network");
     _logger->info("Start mt_blocking network service");
