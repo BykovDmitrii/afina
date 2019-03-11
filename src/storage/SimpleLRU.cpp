@@ -11,8 +11,8 @@ bool SimpleLRU::Put(const std::string &key, const std::string &value)
     return false;
    auto el = _lru_index.find(key);
    if (el != _lru_index.end())
-     return Set(key, value);
-   return this->PutIfAbsent(key, value);
+     return Set(el, key, value);
+   return PutNewElem(key, value);
 }
 
 
@@ -20,8 +20,14 @@ bool SimpleLRU::Put(const std::string &key, const std::string &value)
 bool SimpleLRU::PutIfAbsent(const std::string &key, const std::string &value)
 {
   auto el = _lru_index.find(key);
-  if (el != _lru_index.end())
-    return false;
+   if (el != _lru_index.end())
+     return false;
+  return PutNewElem(key, value);
+}
+
+
+bool SimpleLRU::PutNewElem(const std::string &key, const std::string &value)
+{
   size_t _new_node_len = key.size() + value.size();
   if (_new_node_len > _max_size)
     return false;
@@ -47,6 +53,11 @@ bool SimpleLRU::Set(const std::string &key, const std::string &value)
   auto el = _lru_index.find(key);
   if (el == _lru_index.end())
     return false;
+  return this->Set(el, key, value);
+}
+
+bool SimpleLRU::Set(map_iterator el, const std::string &key, const std::string &value)
+{
   if(key.size() + value.size() > _max_size)
     return false;
   MoveToEnd(el);

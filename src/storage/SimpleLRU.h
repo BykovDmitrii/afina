@@ -61,8 +61,6 @@ private:
     size_t _max_size;
 
     size_t _curr_size; //current size
-    void DeleteElem(map_iterator elem);
-    void MoveToEnd(map_iterator elem);
     // Main storage of lru_nodes, elements in this list ordered descending by "freshness": in the head
     // element that wasn't used for longest time.
     //
@@ -72,6 +70,11 @@ private:
     //std::map<std::string, std::pair<std::string, uint>> _lru_cashe;
     // Index of nodes from list above, allows fast random access to elements by lru_node#key
     map _lru_index;
+protected:
+    bool Set(map_iterator el, const std::string &key, const std::string &value);
+    bool PutNewElem(const std::string &key, const std::string &value);
+    void DeleteElem(map_iterator elem);
+    void MoveToEnd(map_iterator elem);
 };
 
 } // namespace Backend
