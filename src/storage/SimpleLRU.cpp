@@ -33,7 +33,8 @@ bool SimpleLRU::PutNewElem(const std::string &key, const std::string &value)
     return false;
   while (_new_node_len + _curr_size > _max_size)
   {
-    Delete(_lru_head->key);
+    auto el = _lru_index.find(_lru_head->key);
+    DeleteElem(el);
   }
   _curr_size += _new_node_len;
   lru_node*_new_node = new lru_node(key, value);
@@ -65,7 +66,8 @@ bool SimpleLRU::Set(map_iterator el, const std::string &key, const std::string &
   size_t _size_delta = value.size() - node.value.size();
   while((_max_size < _curr_size + _size_delta))
     {
-      Delete(_lru_head->key);
+      auto el = _lru_index.find(_lru_head->key);
+      DeleteElem(el);
     }
   _max_size = _curr_size + _size_delta;
   node.value = value;
