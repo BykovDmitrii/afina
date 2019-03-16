@@ -83,25 +83,20 @@ void ServerImpl::Start(uint16_t port, uint32_t n_accept, uint32_t n_worker=128){
 // See Server.h
 void ServerImpl::Stop() {
     running.store(false);
-    {
-      std::unique_lock<std::mutex> lock(m);
-      while(cur_workers != 0)
-       cond_var.wait(lock);
-    }
+    std::unique_lock<std::mutex> lock(m);
+    while(cur_workers != 0)
+     cond_var.wait(lock);
     shutdown(_server_socket, SHUT_RDWR);
 }
 
 // See Server.h
 void ServerImpl::Join(){
-  running.store(false);
-  {
-      std::unique_lock<std::mutex> lock(m);
-      while(cur_workers != 0)
-       cond_var.wait(lock);
-      assert(_thread.joinable());
-      _thread.join();
-      close(_server_socket);
-  }
+  std::unique_lock<std::mutex> lock(m);
+  while(cur_workers != 0)
+   cond_var.wait(lock);
+  assert(_thread.joinable());
+  _thread.join();
+  close(_server_socket);
 }
 
 void ServerImpl::workFunc(int client_socket){
