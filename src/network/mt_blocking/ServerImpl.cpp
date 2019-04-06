@@ -85,14 +85,14 @@ void ServerImpl::Stop() {
     running.store(false);
     std::unique_lock<std::mutex> lock(m);
     shutdown(_server_socket, SHUT_RDWR);
-    while(cur_workers != 0)
-     cond_var.wait(lock);
+    for(auto i : clients_sockets)
+       shutdown(i, SHUT_RD);
 }
 
 // See Server.h
 void ServerImpl::Join(){
   std::unique_lock<std::mutex> lock(m);
-  while(cur_workers != 0)
+  while(cur_workers != 0 && running == false)
    cond_var.wait(lock);
   assert(_thread.joinable());
   _thread.join();
@@ -188,9 +188,9 @@ void ServerImpl::workFunc(int client_socket){
   {
    std::unique_lock<std::mutex> lock(m);
    cur_workers--;
-   if(cur_workers == 0)
+   if(cur_workers == 0 && running == false)
      cond_var.notify_all();
-   close(client_socket);
+    close(client_socket);
   }
 }
 // See Server.h
@@ -241,6 +241,7 @@ void ServerImpl::OnRun() {
           std::unique_lock<std::mutex> lock(m);
           if(cur_workers < n_workers){
             cur_workers++;
+            clients_sockets.insert(client_socket);
             _logger->debug("starting new thread for {}", client_socket);
             std::thread t(&ServerImpl::workFunc, this, client_socket);
             t.detach();

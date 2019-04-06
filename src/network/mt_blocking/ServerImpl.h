@@ -4,6 +4,7 @@
 #include <atomic>
 #include <thread>
 #include <condition_variable>
+#include <set>
 
 #include <afina/network/Server.h>
 
@@ -57,6 +58,7 @@ private:
     std::mutex m;
     std::thread _thread;
     std::condition_variable cond_var;
+    std::set<int> clients_sockets;
 };
 
 } // namespace MTblocking
