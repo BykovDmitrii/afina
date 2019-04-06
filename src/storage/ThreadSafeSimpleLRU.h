@@ -49,7 +49,7 @@ public:
     }
 
     // see SimpleLRU.h
-    bool Get(const std::string &key, std::string &value) {
+    bool Get(const std::string &key, std::string &value) override {
         // TODO: sinchronization
         std::unique_lock<std::mutex> ulock(m);
         return SimpleLRU::Get(key, value);

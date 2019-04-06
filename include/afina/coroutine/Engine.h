@@ -109,7 +109,7 @@ public:
      * @param pointer to the main coroutine
      * @param arguments to be passed to the main coroutine
      */
-    template <typename... Ta> void start(void (*main)(Ta...), Ta &&... args) {
+    template <typename... Ta> void start(void (*main)(Ta...), Ta &&... args) {//добавить адресс корутины зап которую нельзя??бред но не запомнил
         // To acquire stack begin, create variable on stack and remember its address
         char StackStartsHere;
         this->StackBottom = &StackStartsHere;
@@ -122,7 +122,7 @@ public:
             // Here: correct finish of the coroutine section
             yield();
         } else if (pc != nullptr) {
-            Store(*idle_ctx);
+            Store(*idle_ctx);//epoll wait где то здесь
             sched(pc);
         }
 
