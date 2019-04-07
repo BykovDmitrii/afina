@@ -92,7 +92,7 @@ void ServerImpl::Stop() {
 // See Server.h
 void ServerImpl::Join(){
   std::unique_lock<std::mutex> lock(m);
-  while(cur_workers != 0 && running == false)
+  while(cur_workers != 0 || running == false)
    cond_var.wait(lock);
   assert(_thread.joinable());
   _thread.join();
@@ -188,7 +188,7 @@ void ServerImpl::workFunc(int client_socket){
   {
    std::unique_lock<std::mutex> lock(m);
    cur_workers--;
-   if(cur_workers == 0 && running == false)
+   if(cur_workers == 0 || running == false)
      cond_var.notify_all();
     close(client_socket);
   }
