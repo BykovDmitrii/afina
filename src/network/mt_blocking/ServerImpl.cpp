@@ -91,9 +91,6 @@ void ServerImpl::Stop() {
 
 // See Server.h
 void ServerImpl::Join(){
-  std::unique_lock<std::mutex> lock(m);
-  while(cur_workers != 0 || running == true)
-   cond_var.wait(lock);
   assert(_thread.joinable());
   _thread.join();
   close(_server_socket);
@@ -188,7 +185,7 @@ void ServerImpl::workFunc(int client_socket){
   {
    std::unique_lock<std::mutex> lock(m);
    cur_workers--;
-   if(cur_workers == 0 && running == false)
+   if (cur_workers == 0 && !running.load())
      cond_var.notify_all();
     close(client_socket);
   }
@@ -256,7 +253,11 @@ void ServerImpl::OnRun() {
           }
         }
     }
-
+    {
+      std::unique_lock<std::mutex> lock(m);
+      while(cur_workers != 0)
+        cond_var.wait(lock);
+     }
     // Cleanup on exit...
     _logger->warn("Network stopped");
 }
