@@ -143,12 +143,8 @@ void ServerImpl::OnRun() {
 
             auto old_mask = pc->_event.events;
             if ((current_event.events & EPOLLERR) || (current_event.events & EPOLLHUP)) {
-                pc->DoRead();
-                pc->DoWrite();
                 pc->OnError();
             } else if (current_event.events & EPOLLRDHUP) {
-                pc->DoRead();
-                pc->DoWrite();
                 pc->OnError();
             } else {
                 // Depends on what connection wants...
@@ -165,10 +161,10 @@ void ServerImpl::OnRun() {
                 if (epoll_ctl(epoll_descr, EPOLL_CTL_DEL, pc->_socket, &pc->_event)) {
                     _logger->error("Failed to delete connection from epoll");
                 }
-
+                _logger->error("try to close");
                 close(pc->_socket);
                 pc->OnClose();
-
+                _logger->error("MUST be closed");
                 delete pc;
             } else if (pc->_event.events != old_mask) {
                 if (epoll_ctl(epoll_descr, EPOLL_CTL_MOD, pc->_socket, &pc->_event)) {

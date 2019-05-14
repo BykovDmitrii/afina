@@ -7,11 +7,13 @@ namespace Afina {
 namespace Execute {
 
 // memcached protocol: "set" means "store this data".
-void Set::Execute(Storage &storage, const std::string &args, std::string &out) {
-    std::cout << "Set(" << _key << "): " << args << std::endl;
-    storage.Put(_key, args);
-    out = "STORED";
-}
+  void Set::Execute(Storage &storage, const std::string &args, std::string &out) {
+      std::string args_mod = args.substr(0, args.size() - 2);
+      //std::cout << "Set(" << _key << "): " << args_mod << std::endl;
+      storage.Put(_key, args_mod);
+      out = "STORED";
+  }
+
 
 } // namespace Execute
 } // namespace Afina

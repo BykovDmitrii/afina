@@ -11,14 +11,14 @@
 
 namespace Afina {
 namespace Backend {
-
+/*
 /**
  * # Map based implementation
  * That is NOT thread safe implementaiton!!
  */
 class SimpleLRU : public Afina::Storage {
 public:
-    SimpleLRU(size_t max_size = 1024) : _max_size(max_size), _curr_size(0) {}
+    SimpleLRU(size_t max_size = 20000) : _max_size(max_size), _curr_size(0) {}
 
     ~SimpleLRU() {
         _lru_index.clear();
@@ -81,3 +81,6 @@ protected:
 } // namespace Afina
 
 #endif // AFINA_STORAGE_SIMPLE_LRU_H
+
+
+

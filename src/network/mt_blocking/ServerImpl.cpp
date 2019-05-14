@@ -183,6 +183,7 @@ void ServerImpl::workFunc(int client_socket){
       _logger->error("Failed to process connection on descriptor {}: {}", client_socket, ex.what());
   }
   {
+   clients_sockets.erase(client_socket);
    std::unique_lock<std::mutex> lock(m);
    cur_workers--;
    if (cur_workers == 0 && !running.load())

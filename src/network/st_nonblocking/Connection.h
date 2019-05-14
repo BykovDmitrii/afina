@@ -8,8 +8,10 @@
 #include <sys/epoll.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <deque>
 
 #include <spdlog/logger.h>
+#include <sys/uio.h>
 
 #include <afina/Storage.h>
 #include <afina/execute/Command.h>
@@ -17,6 +19,9 @@
 
 #include "protocol/Parser.h"
 
+#define READ_EVENT (EPOLLIN | EPOLLRDHUP)
+#define WRITE_EVENT (EPOLLOUT | EPOLLRDHUP)
+#define NO_EVENT (EPOLLRDHUP)
 namespace spdlog {
 class logger;
 }
@@ -51,8 +56,8 @@ protected:
      * Logging service to be used in order to report application progress
      */
 
-    void OnError();
-    void OnClose();
+    void OnError(bool a = false);
+    void OnClose(bool a = false);
     void OnStop(); // shutdown RD but don't declare "not alive"
     void DoRead();
     void DoWrite();
@@ -68,6 +73,7 @@ private:
     std::unique_ptr<Execute::Command> command_to_execute;
     char client_buffer[4096];
     int readed_bytes;
+    std::deque<std::string> resp;
     Protocol::Parser parser;
     int written_bytes;
     char wbuf[4096];

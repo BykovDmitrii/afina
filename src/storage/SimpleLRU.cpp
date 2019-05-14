@@ -1,4 +1,5 @@
 #include "SimpleLRU.h"
+#include <iostream>
 
 namespace Afina {
 namespace Backend {
@@ -40,6 +41,7 @@ bool SimpleLRU::PutNewElem(const std::string &key, const std::string &value)
   lru_node*_new_node = new lru_node(key, value);
   if(_lru_end != nullptr)
     _lru_end->next = _new_node;
+
   _new_node->prev.swap(_lru_end);
   _lru_end.reset(_new_node);
   _lru_index.insert(std::pair<std::reference_wrapper<const std::string>, std::reference_wrapper<lru_node>>(_lru_end->key, *_lru_end));
@@ -69,7 +71,7 @@ bool SimpleLRU::Set(map_iterator el, const std::string &key, const std::string &
       auto el = _lru_index.find(_lru_head->key);
       DeleteElem(el);
     }
-  _max_size = _curr_size + _size_delta;
+  _curr_size = _curr_size + _size_delta;
   node.value = value;
   return true;
 }
@@ -105,8 +107,8 @@ void SimpleLRU::DeleteElem(map_iterator el){
   else{
       _lru_end.swap(node.prev);
     }
-  if(_lru_head->key == node.key)
-    _lru_head = node.next;
+  if(_lru_head == &node)
+    _lru_head = _lru_head->next;
   _lru_index.erase(el);
 }
 
@@ -127,3 +129,5 @@ void SimpleLRU::MoveToEnd(map_iterator el){
 }
 } // namespace Backend
 } // namespace Afina
+
+\
